@@ -1,22 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application/screens/dashboard.dart';
 import 'package:flutter_application/screens/sign_up.dart';
+import 'package:flutter_application/services/auth_service.dart';
 import 'package:flutter_application/utils/appvalidator.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   LoginView({super.key});
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
 
-  void _submitForm() {
+class _LoginViewState extends State<LoginView> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  var isLoader = false;
+  var authService = AuthService();
+  bool _obscureText = true;
+
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(_formKey.currentContext!).showSnackBar(
-        const SnackBar(content: Text('Form submitted successfully')),
-      );
+            setState(() {
+        isLoader = true;
+      });
+
+      var data = {
+        "email": _emailController.text,
+        "password": _passwordController.text,
+        
+      };
+
+      await authService.login(data, context);
+      
+      setState(() { 
+        isLoader = false;
+      });
     }
   }
 
   var appValidator = AppValidator();
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +72,7 @@ class LoginView extends StatelessWidget {
                     height: 16.0,
                   ),
                   TextFormField(
+                    controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(
                       color: Colors.white,
@@ -59,21 +86,36 @@ class LoginView extends StatelessWidget {
                     height: 16.0,
                   ),
                   TextFormField(
+                    controller: _passwordController,
                     style: TextStyle(
                       color: Colors.white,
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration("Password", Icons.lock),
                     validator: appValidator.validatePassword,
+                    obscureText: _obscureText,
+                    
                   ),
                   SizedBox(
                     height: 40.0,
                   ),
                   SizedBox(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: _submitForm, child: Text("Create", style: TextStyle(color: Colors.black, fontSize: 20),))),
+                    height: 50,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white
+                      ),
+                      onPressed: () {
+                        isLoader ? print("Loading"): _submitForm();
+
+                      },
+                      child: isLoader 
+                      ? Center(child: CircularProgressIndicator()):
+                      Text("Login",
+                      style: TextStyle(fontSize: 20),),
+                    ),
+                  ),
                   SizedBox(
                     height: 30.0,
                   ),

@@ -1,20 +1,58 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application/screens/dashboard.dart';
+import 'package:flutter_application/services/auth_service.dart';
 import 'package:flutter_application/utils/appvalidator.dart';
 
 import 'login_screen.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
   SignUpView({super.key});
 
+  @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void _submitForm() {
+  final _userNameController = TextEditingController();
+
+  final _emailController = TextEditingController();
+
+  final _phoneController = TextEditingController();
+
+  final _passwordController = TextEditingController();
+
+  var authService = AuthService();
+  var isLoader = false;
+  bool _obscureText = true;
+
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(_formKey.currentContext!).showSnackBar(
-        const SnackBar(content: Text('Form submitted successfully')),
+      setState(() {
+        isLoader = true;
+      });
+
+      var data = {
+        "username": _userNameController.text,
+        "email": _emailController.text,
+        "password": _passwordController.text,
+        "phone": _phoneController.text,
+      };
+
+      await authService.clreateUser(data, context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Dashboard()),
       );
+      setState(() {
+        isLoader = false;
+      });
+     // ScaffoldMessenger.of(_formKey.currentContext!).showSnackBar(
+       // const SnackBar(content: Text('Form submitted successfully')),
+      //);
     }
   }
 
@@ -47,6 +85,7 @@ class SignUpView extends StatelessWidget {
                     height: 50.0,
                   ),
                   TextFormField(
+                    controller: _userNameController,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -58,6 +97,7 @@ class SignUpView extends StatelessWidget {
                     height: 16.0,
                   ),
                   TextFormField(
+                    controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(
                       color: Colors.white,
@@ -70,6 +110,7 @@ class SignUpView extends StatelessWidget {
                     height: 16.0,
                   ),
                   TextFormField(
+                    controller: _phoneController,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -82,25 +123,36 @@ class SignUpView extends StatelessWidget {
                     height: 16.0,
                   ),
                   TextFormField(
+                    controller: _passwordController,
                     style: TextStyle(
                       color: Colors.white,
                     ),
+                    
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration("Password", Icons.lock),
                     validator: appValidator.validatePassword,
+                    obscureText: _obscureText,
                   ),
                   SizedBox(
                     height: 40.0,
                   ),
                   SizedBox(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: _submitForm,
-                          child: Text(
-                            "Create",
-                            style: TextStyle(color: Colors.black, fontSize: 20),
-                          ))),
+                    height: 50,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white
+                      ),
+                      onPressed: () {
+                        isLoader ? print("Loading"): _submitForm();
+
+                      },
+                      child: isLoader 
+                      ? Center(child: CircularProgressIndicator()):
+                      Text("Create",
+                      style: TextStyle(fontSize: 20),),
+                    ),
+                  ),
                   SizedBox(
                     height: 30.0,
                   ),
