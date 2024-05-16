@@ -42,7 +42,7 @@ class _SignUpViewState extends State<SignUpView> {
         "phone": _phoneController.text,
       };
 
-      await authService.clreateUser(data, context);
+      await authService.createUser(data, context);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Dashboard()),

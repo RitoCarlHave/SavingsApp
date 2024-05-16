@@ -11,14 +11,19 @@ class NavBar extends StatelessWidget {
 
         selectedIndex: selectedIndex,
         onDestinationSelected: onDestinationSelected,
+        indicatorColor: Color.fromRGBO(197, 125, 117, 1.0),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        height: 60,
         destinations: const <Widget>[
           NavigationDestination(
-            icon: Icon(Icons.explore),
+            icon: Icon(Icons.home),
+            selectedIcon: Icon(Icons.home, color: Colors.white),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.commute),
-            label: 'Transaction',
+            icon: Icon(Icons.settings),
+            selectedIcon: Icon(Icons.settings, color: Colors.white),
+            label: 'Settings',
           ),
 
         ],

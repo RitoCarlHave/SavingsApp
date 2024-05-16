@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/screens/dashboard.dart';
 
 class AuthService {
-  clreateUser(data, context) async {
+  createUser(data, context) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: data['email'],
