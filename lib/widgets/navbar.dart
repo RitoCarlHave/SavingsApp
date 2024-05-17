@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//ignore_for_file: prefer_const_constructors
+
 class NavBar extends StatelessWidget {
   const NavBar({super.key, required this.selectedIndex, required this.onDestinationSelected});
   final int selectedIndex;

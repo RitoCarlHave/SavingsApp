@@ -1,11 +1,9 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application/screens/home_screen.dart';
-import 'package:flutter_application/screens/login_screen.dart';
 import 'package:flutter_application/screens/transaction_screen.dart';
 import 'package:flutter_application/widgets/navbar.dart';
+
+//ignore_for_file: prefer_const_constructors
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});

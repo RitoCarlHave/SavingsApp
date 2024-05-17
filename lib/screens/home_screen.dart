@@ -1,11 +1,14 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/screens/login_screen.dart';
 import 'package:flutter_application/widgets/hero_card.dart';
 import 'package:flutter_application/widgets/transactions_cards.dart';
 
+
+//ignore_for_file: prefer_const_constructors
 //ignore_for_file: prefer_const_literals_to_create_immutables
+//ignore_for_file: use_build_context_synchronously
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -32,6 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromRGBO(197, 125, 117, 1.0),
+        onPressed: (() {}),
+        child: Icon(Icons.add),
+        ),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(197, 125, 117, 1.0),
         title: Text("Hello, " , style: TextStyle(color: Colors.white)),
@@ -49,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           HeroCard(),
           TransactionsCards(),
-         
+          
+          
         ],
       )
     );

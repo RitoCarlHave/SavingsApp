@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/screens/login_screen.dart';
-import 'package:flutter_application/screens/sign_up.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application/widgets/auth_gate.dart';
 import 'firebase_options.dart';
+
+//ignore_for_file: deprecated_member_use
+//ignore_for_file: prefer_const_constructors
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

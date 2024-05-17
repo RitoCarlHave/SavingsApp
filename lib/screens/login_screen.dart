@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application/screens/dashboard.dart';
 import 'package:flutter_application/screens/sign_up.dart';
 import 'package:flutter_application/services/auth_service.dart';
 import 'package:flutter_application/utils/appvalidator.dart';
