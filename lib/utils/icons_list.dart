@@ -22,6 +22,54 @@ class AppIcons {
       "name": "Internet",
       "icon": FontAwesomeIcons.wifi,
     },
+    {
+      "name": "Electricity",
+      "icon": FontAwesomeIcons.bolt,
+    },
+    {
+      "name": "Water",
+      "icon": FontAwesomeIcons.water,
+    },
+    {
+      "name": "Rent",
+      "icon": FontAwesomeIcons.home,
+    },
+    {
+      "name": "Phone Bill",
+      "icon": FontAwesomeIcons.phone,
+    },
+    {
+      "name": "Dining Out",
+      "icon": FontAwesomeIcons.utensils,
+    },
+    {
+      "name": "Entertainment",
+      "icon": FontAwesomeIcons.film,
+    },
+    {
+      "name": "Healthcare",
+      "icon": FontAwesomeIcons.medkit,
+    },
+    {
+      "name": "Transportation",
+      "icon": FontAwesomeIcons.bus,
+    },
+    {
+      "name": "Clothing",
+      "icon": FontAwesomeIcons.tshirt,
+    },
+    {
+      "name": "Insurance",
+      "icon": FontAwesomeIcons.shieldAlt,
+    },
+    {
+      "name": "Education",
+      "icon": FontAwesomeIcons.graduationCap,
+    },
+    {
+      "name": "Others",
+      "icon": FontAwesomeIcons.cartPlus,
+    },
 
     
   ];

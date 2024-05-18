@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/utils/icons_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'transaction_card.dart';
 
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
@@ -8,8 +12,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class TransactionsCards extends StatelessWidget {
   TransactionsCards({super.key});
 
-  var appIcons = AppIcons();
-  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,90 +26,49 @@ class TransactionsCards extends StatelessWidget {
               ),
             ],
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: 4,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Container(
-                margin:
-                    EdgeInsets.only(top: 8), // Add some spacing between cards
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 10),
-                      color: Colors.grey,
-                      blurRadius: 10.0,
-                      spreadRadius: 4.0,
-                    )
-                  ],
-                  color: Colors
-                      .white, // Add background color to make shadow effect visible
-                ),
-                child: ListTile(
-                  minVerticalPadding: 10,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 10, 
-                    vertical: 0,
-                  ),
-                  leading: Container(
-                    width: 70,
-                    height: 100,
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.green.withOpacity(0.2),
-                      ),
-                      child: Center(
-                        child: FaIcon(
-                           appIcons.getExpenseCategoryIcons('home'))),
-                    ),
-                  ),
-                  title: Text("Car Rent Oct 2023"),
-                  trailing: Column(
-                    mainAxisSize: MainAxisSize
-                        .min, // Ensure the column takes minimal vertical space
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "P 8000",
-                        style: TextStyle(
-                            color: Color.fromRGBO(52, 81, 58, 1.0),
-                            fontSize: 13),
-                      ),
-                      Text(
-                        "P 525",
-                        style: TextStyle(color: Colors.grey, fontSize: 13),
-                      ),
-                    ],
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Balance",
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                      Text(
-                        "25 Oct 4:51 PM",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
+          RecentTransactionList(),
         ],
       ),
     );
+  }
+}
+
+class RecentTransactionList extends StatelessWidget {
+  RecentTransactionList({
+    super.key,
+  });
+  final userId = FirebaseAuth.instance.currentUser!.uid;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .doc(userId)
+            .collection("transactions")
+            .orderBy('timestamp', descending: true)
+            .limit(20)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text("Loading");
+          } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return const Center(child: Text('No transactions found.'));
+          }
+
+          var data = snapshot.data!.docs;
+          return ListView.builder(
+              shrinkWrap: true,
+              itemCount: data.length,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                var cardData = data[index];
+                return TransactionCard(
+                  data: cardData,
+                );
+              });
+        });
   }
 }
