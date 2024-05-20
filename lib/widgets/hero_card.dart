@@ -88,7 +88,7 @@ class Cards extends StatelessWidget {
             child: Row(
               children: [
                 CardOne(
-                  color: Color.fromRGBO(52, 81, 58, 1.0),
+                  color: Color.fromRGBO(74, 121, 83, 1) ,
                   heading: 'Credit',
                   amount: "${data['totalCredit']}",
                 ),

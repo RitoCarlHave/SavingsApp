@@ -3,6 +3,8 @@ import 'package:flutter_application/screens/dashboard.dart';
 import 'package:flutter_application/services/auth_service.dart';
 import 'package:flutter_application/utils/appvalidator.dart';
 
+//ignore_for_file: prefer_const_constructors
+
 import 'login_screen.dart';
 
 class SignUpView extends StatefulWidget {
@@ -59,7 +61,7 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF252634),
+        backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -67,25 +69,28 @@ class _SignUpViewState extends State<SignUpView> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 80.0,
+                    height: 5.0,
+                  ),
+
+                  SizedBox(
+                    width: 220,
+                    height: 220,
+                    child: Image.asset(
+                      'assets/ListApp1.png',
+                      width:
+                          1000, // Set the same width as the SizedBox if needed
+                      height:
+                          1000, // Make sure the image is in your assets folder
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   SizedBox(
-                      width: 250,
-                      child: Text(
-                        'Create New Account',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                    height: 50.0,
+                    height: 4.0,
                   ),
                   TextFormField(
                     controller: _userNameController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration("Username", Icons.person),
@@ -98,7 +103,7 @@ class _SignUpViewState extends State<SignUpView> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration("Email", Icons.email),
@@ -110,7 +115,7 @@ class _SignUpViewState extends State<SignUpView> {
                   TextFormField(
                     controller: _phoneController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration:
@@ -123,7 +128,7 @@ class _SignUpViewState extends State<SignUpView> {
                   TextFormField(
                     controller: _passwordController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -132,14 +137,14 @@ class _SignUpViewState extends State<SignUpView> {
                     obscureText: _obscureText,
                   ),
                   SizedBox(
-                    height: 40.0,
+                    height: 20.0,
                   ),
                   SizedBox(
                     height: 50,
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white
+                        backgroundColor: Color.fromRGBO(197, 125, 117, 1.0)
                       ),
                       onPressed: () {
                         isLoader ? print("Loading"): _submitForm();
@@ -148,11 +153,11 @@ class _SignUpViewState extends State<SignUpView> {
                       child: isLoader 
                       ? Center(child: CircularProgressIndicator()):
                       Text("Create",
-                      style: TextStyle(fontSize: 20),),
+                      style: TextStyle(fontSize: 20, color: Colors.white),),
                     ),
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 10.0,
                   ),
                   TextButton (
                       onPressed: () {
@@ -164,7 +169,7 @@ class _SignUpViewState extends State<SignUpView> {
                       },
                       child: Text(
                         "Login",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                        style: TextStyle(color: Color.fromRGBO(197, 125, 117, 1.0), fontSize: 25),
                       )),
                 ],
               )),
@@ -173,15 +178,15 @@ class _SignUpViewState extends State<SignUpView> {
 
   InputDecoration _buildInputDecoration(String label, IconData suffixIcon) {
     return InputDecoration(
-        fillColor: Color(0xAA494A59),
+        fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0x35949494))),
+            borderSide: BorderSide(color: Color.fromRGBO(197, 125, 117, 1.0))),
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            OutlineInputBorder(borderSide: BorderSide(color: Color.fromRGBO(197, 125, 117, 1.0))),
         filled: true,
-        labelStyle: TextStyle(color: Color(0xFF949494)),
+        labelStyle: TextStyle(color: Color.fromRGBO(197, 125, 117, 1.0)),
         labelText: label,
-        suffixIcon: Icon(suffixIcon, color: Color(0xFF949494)),
+        suffixIcon: Icon(suffixIcon, color: Color.fromRGBO(197, 125, 117, 1.0)),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)));
   }
 }

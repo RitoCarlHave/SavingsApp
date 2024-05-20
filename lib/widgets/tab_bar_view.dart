@@ -14,7 +14,7 @@ class TypeTabBar extends StatelessWidget {
       child: Column(children: [
         TabBar(tabs: [
           Tab(
-            text: "Credit",
+            text: "Credit", 
           ),
           Tab(
             text: "Debit",

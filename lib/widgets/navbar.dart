@@ -18,14 +18,19 @@ class NavBar extends StatelessWidget {
         height: 60,
         destinations: const <Widget>[
           NavigationDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Color.fromRGBO(197, 125, 117, 1.0)),
             selectedIcon: Icon(Icons.home, color: Colors.white),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.receipt_long),
+            icon: Icon(Icons.receipt_long, color: Color.fromRGBO(197, 125, 117, 1.0)),
             selectedIcon: Icon(Icons.receipt_long, color: Colors.white),
             label: 'receipt_long',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings, color: Color.fromRGBO(197, 125, 117, 1.0)),
+            selectedIcon: Icon(Icons.settings, color: Colors.white),
+            label: 'settings',
           ),
 
         ],

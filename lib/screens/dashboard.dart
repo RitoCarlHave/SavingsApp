@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/screens/home_screen.dart';
+import 'package:flutter_application/screens/settings_screen.dart';
 import 'package:flutter_application/screens/transaction_screen.dart';
 import 'package:flutter_application/widgets/navbar.dart';
 
@@ -18,6 +19,7 @@ class _DashboardState extends State<Dashboard> {
    var pageViewList = [
     HomeScreen(),
     TransactionScreen(),
+    SettingsScreen(),
   ]; 
 
   logOut() async {

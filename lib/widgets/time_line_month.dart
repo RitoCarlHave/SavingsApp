@@ -60,8 +60,8 @@ class _TimeLineMonthState extends State<TimeLineMonth> {
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: currentMonth == months[index]
-                        ? Colors.blue.shade900
-                        : Colors.purple.withOpacity(0.1),
+                        ? Color.fromRGBO(52, 81, 58, 1.0) 
+                        : Color.fromRGBO(181, 78, 74, 1.0).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20)),
                 child: Center(
                     child: Text(
@@ -69,7 +69,7 @@ class _TimeLineMonthState extends State<TimeLineMonth> {
                   style: TextStyle(
                     color: currentMonth == months[index]
                         ? Colors.white
-                        : Colors.purple,
+                        : Color.fromRGBO(181, 78, 74, 1.0),
                   ),
                 )),
               ),

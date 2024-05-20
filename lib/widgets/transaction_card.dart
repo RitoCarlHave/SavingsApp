@@ -1,7 +1,12 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application/utils/icons_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+
+//ignore_for_file: prefer_const_constructors
+
 
 class TransactionCard extends StatelessWidget {
   TransactionCard({
@@ -48,14 +53,14 @@ class TransactionCard extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: data['type'] == 'credit'
-                      ? Colors.green.withOpacity(0.2)
-                      : Colors.red.withOpacity(0.2)),
+                      ? Color.fromRGBO(74, 121, 83, 1) .withOpacity(0.2)
+                      : Color.fromRGBO(181, 78, 74, 1.0).withOpacity(0.2)),
               child: Center(
                   child: FaIcon(
                       appIcons.getExpenseCategoryIcons('${data['category']}'),
                       color: data['type'] == 'credit'
-                      ? Colors.green
-                      : Colors.red
+                      ? Color.fromRGBO(74, 121, 83, 1) 
+                      : Color.fromRGBO(181, 78, 74, 1.0)
                       ),
                       ),
             ),
@@ -70,8 +75,8 @@ class TransactionCard extends StatelessWidget {
                 "${data['type'] == 'credit' ? '+' : '-'} P${data['amount']}",
                 style: TextStyle(
                     color: data['type'] == 'credit'
-                      ? Colors.green
-                      : Colors.red, fontSize: 13),
+                      ? Color.fromRGBO(74, 121, 83, 1) 
+                      : Color.fromRGBO(181, 78, 74, 1.0), fontSize: 13),
               ),
               Text(
                 "P ${data['remainingAmount']}",

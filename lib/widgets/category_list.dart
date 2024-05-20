@@ -61,8 +61,8 @@ class _CategoryListState extends State<CategoryList> {
                 padding: EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                     color: currentCategory == data['name']
-                        ? Colors.blue.shade900
-                        : Colors.blue.withOpacity(0.1),
+                        ? Color.fromRGBO(52, 81, 58, 1.0)
+                        : Color.fromRGBO(52, 81, 58, 1.0).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20)),
                 child: Center(
                     child: Row(
@@ -72,7 +72,7 @@ class _CategoryListState extends State<CategoryList> {
                       size: 15,
                       color: currentCategory == data['name']
                           ? Colors.white
-                          : Colors.blue.shade900,
+                          : Color.fromRGBO(52, 81, 58, 1.0),
                     ),
                     SizedBox(
                       width: 10,
@@ -82,7 +82,7 @@ class _CategoryListState extends State<CategoryList> {
                       style: TextStyle(
                         color: currentCategory == data['name']
                             ? Colors.white
-                            : Colors.blue.shade900,
+                            : Color.fromRGBO(52, 81, 58, 1.0),
                       ),
                     ),
                   ],

@@ -59,8 +59,8 @@ class AppIcons {
       "icon": FontAwesomeIcons.tshirt,
     },
     {
-      "name": "Insurance",
-      "icon": FontAwesomeIcons.shieldAlt,
+      "name": "Salary",
+      "icon": FontAwesomeIcons.moneyBillWave,
     },
     {
       "name": "Education",
