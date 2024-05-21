@@ -171,6 +171,12 @@ class _LoginViewState extends State<LoginView> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 15,),
+                  TextButton(onPressed: () => AuthService().signInWithGoogle(context), 
+                  child: Image.asset(
+                    'assets/google.png', 
+                    height: 50,
+                    width: 50,))
                 ],
               )),
         ));

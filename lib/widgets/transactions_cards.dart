@@ -10,6 +10,7 @@ import 'transaction_card.dart';
 // ignore_for_file: prefer_const_literals_to_create_immutables
 // ignore: must_be_immutable
 class TransactionsCards extends StatelessWidget {
+  // ignore: prefer_const_constructors_in_immutables
   TransactionsCards({super.key});
 
   @override
