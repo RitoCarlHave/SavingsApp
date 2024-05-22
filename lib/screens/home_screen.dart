@@ -59,16 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(197, 125, 117, 1.0),
-          title: Text("Hello, ", style: TextStyle(color: Colors.white)),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  logOut();
-                },
-                icon: isLogoutLoading
-                    ? CircularProgressIndicator()
-                    : Icon(Icons.exit_to_app, color: Colors.white))
-          ],
+          title: Text("Welcome Back!", style: TextStyle(color: Colors.white)),
         ),
         body: SingleChildScrollView(
           child: Column(

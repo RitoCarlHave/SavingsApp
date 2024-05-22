@@ -33,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
                       user?.photoURL ??
                           'https://images.app.goo.gl/LEQrX3wnxp2FrQny8',
                     ),
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: Colors.white,
                     radius: 30,
                   ),
                 ),
