@@ -60,120 +60,124 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 5.0,
-                  ),
-
-                  SizedBox(
-                    width: 220,
-                    height: 220,
-                    child: Image.asset(
-                      'assets/ListApp1.png',
-                      width:
-                          1000, // Set the same width as the SizedBox if needed
-                      height:
-                          1000, // Make sure the image is in your assets folder
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  TextFormField(
-                    controller: _userNameController,
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: _buildInputDecoration("Username", Icons.person),
-                    validator: appValidator.validateUsername,
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: _buildInputDecoration("Email", Icons.email),
-                    validator: (appValidator.validateEmail),
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  TextFormField(
-                    controller: _phoneController,
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration:
-                        _buildInputDecoration("Phone Number", Icons.phone),
-                    validator: appValidator.validatePhoneNumber,
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  TextFormField(
-                    controller: _passwordController,
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                    
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: _buildInputDecoration("Password", Icons.lock),
-                    validator: appValidator.validatePassword,
-                    obscureText: _obscureText,
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(197, 125, 117, 1.0)
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 5.0,
                       ),
-                      onPressed: () {
-                        isLoader ? print("Loading"): _submitForm();
-
-                      },
-                      child: isLoader 
-                      ? Center(child: CircularProgressIndicator()):
-                      Text("Create",
-                      style: TextStyle(fontSize: 20, color: Colors.white),),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextButton (
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginView()),
-                        );
-                      },
-                      child: Text(
-                        "Login",
-                        style: TextStyle(color: Color.fromRGBO(197, 125, 117, 1.0), fontSize: 25),
-                      )),
-                ],
-              )),
-        ));
+            
+                      SizedBox(
+                        width: 220,
+                        height: 220,
+                        child: Image.asset(
+                          'assets/ListApp1.png',
+                          width:
+                              1000, // Set the same width as the SizedBox if needed
+                          height:
+                              1000, // Make sure the image is in your assets folder
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      TextFormField(
+                        controller: _userNameController,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: _buildInputDecoration("Username", Icons.person),
+                        validator: appValidator.validateUsername,
+                      ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      TextFormField(
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: _buildInputDecoration("Email", Icons.email),
+                        validator: (appValidator.validateEmail),
+                      ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      TextFormField(
+                        controller: _phoneController,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration:
+                            _buildInputDecoration("Phone Number", Icons.phone),
+                        validator: appValidator.validatePhoneNumber,
+                      ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      TextFormField(
+                        controller: _passwordController,
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: _buildInputDecoration("Password", Icons.lock),
+                        validator: appValidator.validatePassword,
+                        obscureText: _obscureText,
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(197, 125, 117, 1.0)
+                          ),
+                          onPressed: () {
+                            isLoader ? print("Loading"): _submitForm();
+            
+                          },
+                          child: isLoader 
+                          ? Center(child: CircularProgressIndicator()):
+                          Text("Create",
+                          style: TextStyle(fontSize: 20, color: Colors.white),),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      TextButton (
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginView()),
+                            );
+                          },
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Color.fromRGBO(197, 125, 117, 1.0), fontSize: 25),
+                          )),
+                    ],
+                  )),
+            ),
+          )),
+    );
   }
 
   InputDecoration _buildInputDecoration(String label, IconData suffixIcon) {
