@@ -143,7 +143,7 @@ class CardOne extends StatelessWidget {
                     "₱ ${amount}",
                     style: TextStyle(
                         color: color,
-                        fontSize: 25,
+                        fontSize: 20,
                         fontWeight: FontWeight.w600),
                   ),
                 ],

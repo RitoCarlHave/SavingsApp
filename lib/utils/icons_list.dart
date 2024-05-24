@@ -7,43 +7,43 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class AppIcons {
   final List<Map<String, dynamic >> homeExpensesCategories = [
     {
-      "name": "Gas Filling",
-      "icon": FontAwesomeIcons.gasPump,
+      "name": "Emergency Fund",
+      "icon": FontAwesomeIcons.circleExclamation,
     },
     {
       "name": "Grocery",
       "icon": FontAwesomeIcons.shoppingCart,
     },
     {
-      "name": "Milk",
-      "icon": FontAwesomeIcons.mugHot,
+      "name": "Loans",
+      "icon": FontAwesomeIcons.receipt,
     },
     {
-      "name": "Internet",
-      "icon": FontAwesomeIcons.wifi,
+      "name": "Child Care",
+      "icon": FontAwesomeIcons.child,
     },
     {
-      "name": "Electricity",
-      "icon": FontAwesomeIcons.bolt,
+      "name": "Savings",
+      "icon": FontAwesomeIcons.piggyBank,
     },
     {
-      "name": "Water",
-      "icon": FontAwesomeIcons.water,
+      "name": "Maintainance",
+      "icon": FontAwesomeIcons.toolbox,
     },
     {
-      "name": "Rent",
-      "icon": FontAwesomeIcons.home,
+      "name": "Pet Care",
+      "icon": FontAwesomeIcons.dog,
     },
     {
-      "name": "Phone Bill",
-      "icon": FontAwesomeIcons.phone,
+      "name": "Bills/Payments",
+      "icon": FontAwesomeIcons.creditCard,
     },
     {
       "name": "Dining Out",
       "icon": FontAwesomeIcons.utensils,
     },
     {
-      "name": "Entertainment",
+      "name": "Subscription",
       "icon": FontAwesomeIcons.film,
     },
     {
@@ -55,8 +55,8 @@ class AppIcons {
       "icon": FontAwesomeIcons.bus,
     },
     {
-      "name": "Clothing",
-      "icon": FontAwesomeIcons.tshirt,
+      "name": "Shopping",
+      "icon": FontAwesomeIcons.tags,
     },
     {
       "name": "Salary",
@@ -68,7 +68,7 @@ class AppIcons {
     },
     {
       "name": "Others",
-      "icon": FontAwesomeIcons.cartPlus,
+      "icon": FontAwesomeIcons.solidCircleQuestion,
     },
 
     
